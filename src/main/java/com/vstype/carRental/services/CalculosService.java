@@ -23,8 +23,18 @@ public class CalculosService {
 		
 		resultado.setMedia(media);
 		
+		Integer maiorNumero = 0;
+		if (entrada.getLista() != null) {
+			for(Integer e: entrada.getLista()){
+				if(e > maiorNumero) {
+					maiorNumero = e;
+				}
+			resultado.setMaiorNumero(maiorNumero);	
+			}
+		}
 		return resultado;
 	}
+	
 	
 	
 }

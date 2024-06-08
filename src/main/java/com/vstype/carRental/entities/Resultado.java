@@ -4,7 +4,17 @@ public class Resultado {
 
 	private Integer soma;
 	private Double media;
+	private Integer maiorNumero;
 	
+	
+	
+	
+	public Integer getMaiorNumero() {
+		return maiorNumero;
+	}
+	public void setMaiorNumero(Integer maiorNumero) {
+		this.maiorNumero = maiorNumero;
+	}
 	public Integer getSoma() {
 		return soma;
 	}
