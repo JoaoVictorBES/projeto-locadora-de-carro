@@ -1,5 +1,7 @@
 package com.vstype.carRental.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,24 +22,16 @@ public class CarroService {
 	}
 	
 	
-	public Carro findById(int id) {
+	public Carro findById(Long id) {
 		
-		if(id == 1){
-			Carro carro = new Carro();
-			
-			carro.setAno(2006);
-			carro.setMarca("Volksvagem");
-			carro.setModelo("Hatch");
-			carro.setNome("Fox");
-			
-			return carro;
-			
-		}else {
-			
-			return null;
-			
-		}
+		Optional<Carro> carro = this.carroRepository.findById(id);
+		return carro.get();		
+	}
+	
+	
+	public void delete (Carro carro) {
 		
-		
+		this.carroRepository.delete(carro);
+	
 	}
 }
