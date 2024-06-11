@@ -2,13 +2,21 @@ package com.vstype.carRental.entities;
 
 public class Carro {
 
+	private Long id;
 	private String nome;
 	private String marca;
 	private String modelo;
 	private int ano;
 	
 	
+
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public int getAno() {
 		return ano;
 	}
