@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.vstype.carRental.entities.Carro;
+import com.vstype.carRental.entities.Marca;
 import com.vstype.carRental.repositories.CarroRepository;
 
 @Service
@@ -47,4 +48,26 @@ public class CarroService {
 		this.carroRepository.save(carro);
 		return ("Carro atualizado com sucesso!");
 	}
+	
+	public List<Carro> findByNome(String nome){
+		
+		return this.carroRepository.findByNome(nome);
+		
+	}
+	
+	public List<Carro> findByMarca(long idMarca){
+		
+		Marca marca = new Marca();
+		marca.setId(idMarca);
+		return this.carroRepository.findByMarca(marca);
+		
+	}
+	
+	public List<Carro> findAcimaAno(int ano){
+		
+		return this.carroRepository.findAcimaAno(ano);
+		
+	}
+	
+	
 }
