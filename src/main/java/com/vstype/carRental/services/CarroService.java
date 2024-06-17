@@ -17,10 +17,20 @@ public class CarroService {
 	
 	public String save(Carro carro) {
 		
+		//Regra de negócio de validação do nome do carro
+		this.verificarNomeCarro(carro.getNome(), carro.getAno());
+		
 		this.carroRepository.save(carro);
 		return ("Carro salvo com sucesso!");
 	}
 	
+	public boolean verificarNomeCarro(String nome, int ano) {
+		
+		if(nome.equals("Jeep Compass") && ano < 2006)
+			throw new RuntimeException();
+		
+		return true;
+	}
 	
 	public Carro findById(Long id) {
 		
@@ -37,12 +47,14 @@ public class CarroService {
 	
 	public List<Carro> findAll(){
 		
-		List <Carro> lista =this.carroRepository.findAll();
+		List <Carro> lista = this.carroRepository.findAll();
 		return lista;
 		
 	}
 	
 	public String update(Carro carro, Long id) {
+		
+		this.verificarNomeCarro(carro.getNome(), carro.getAno());
 		
 		carro.setId(id);
 		this.carroRepository.save(carro);
