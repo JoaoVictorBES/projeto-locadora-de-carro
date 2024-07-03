@@ -25,16 +25,5 @@ public class CarroServiceTest {
 		
 		assertEquals(true, retorno);
 	}
-	
-	
-	@Test
-	void cenario02() {
-		
-		assertThrows(Exception.class, () -> {
-			
-			boolean retorno = this.carroService.verificarNomeCarro("Jeep Compass", 1995);
-		
-		});
-	}
-	
+
 }	

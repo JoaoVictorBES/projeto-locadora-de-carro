@@ -39,10 +39,12 @@ public class CarroService {
 	}
 	
 	
-	public void delete (Carro carro) {
+	public String delete(long id) {
 		
-		this.carroRepository.delete(carro);
-	
+		this.carroRepository.deleteById(id);
+		
+		return "Carro deletado com sucesso!";
+
 	}
 	
 	public List<Carro> findAll(){

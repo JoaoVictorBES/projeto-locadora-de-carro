@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import com.vstype.carRental.services.CarroService;
 
 @RestController
 @RequestMapping("/carro")
+@CrossOrigin("*")
 public class CarroController {
 
 		@Autowired
@@ -59,25 +61,15 @@ public class CarroController {
 		}	
 			
 		@DeleteMapping("/delete/{id}")
-		public ResponseEntity<Void> deleteCarro(@PathVariable Long id){
-			
+		public ResponseEntity<String> delete(@PathVariable long id){
 			
 			try {
 				
-				Carro carro = carroService.findById(id); 
+				String mensagem = this.carroService.delete(id);
+				return new ResponseEntity<>(mensagem, HttpStatus.OK);
 				
-	            if (carro == null) {
-	                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	            }
-	            
-				this.carroService.delete(carro);
-				return new ResponseEntity<>(null, HttpStatus.OK);
-				
-				
-			}catch(Exception e) {
-				
-				return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-				
+			} catch (Exception e) {
+				return new ResponseEntity<String>("Deu esse erro aqui: "+e.getMessage(), HttpStatus.BAD_REQUEST);
 			}
 			
 		}
